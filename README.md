@@ -1,4 +1,5 @@
 # Astar-demo
+
 This is an interactive A* algorithm visualization on a map.  
 Made with Vite, Typescript, leafletjs.  
 
