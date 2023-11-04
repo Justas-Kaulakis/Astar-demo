@@ -1,0 +1,96 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+:root {
+  --trail-color: orange;
+  --rez-color: yellow;
+}
+
+#map {
+  height: 100vh;
+  width: 100%
+}
+
+.marker .text-icon {
+  font-size: 16px;
+  color: red;
+}
+
+.box {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  z-index: 1000;
+  bottom: 3em;
+  right: 3em;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  background-color: rgba(248, 225, 18, 0.8);
+  box-shadow: -1px 0px 20px 0px rgba(255, 242, 100, 0.5);
+  /* padding: 1em; */
+  border-radius: 1em;
+}
+
+#find-btn {
+  padding: 1em 2em;
+  border-radius: 0 0 1em  1em;
+  border: none;
+  cursor: pointer;
+}
+
+#find-btn:active {
+  padding: 0.9em 1.9em;
+  margin: 0.1em;
+}
+
+.pos-data {
+  padding-bottom: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+}
+.pos-data div {
+  padding: 0 0.5em;
+}
+
+/* path .stroke-polyline  */
+.rez-bloom {
+  -webkit-filter: drop-shadow(1px 0px 6px var(--rez-color));
+  filter: drop-shadow(1px 0px 6px var(--rez-color));
+  /* Similar syntax to box-shadow */
+}
+.trail-bloom {
+  -webkit-filter: drop-shadow(1px 0px 6px var(--rez-color));
+  filter: drop-shadow(1px 0px 6px var(--rez-color));
+  /* Similar syntax to box-shadow */
+}
+.flashbang {
+  pointer-events: none;
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  animation-fill-mode: forwards;
+}
+
+.flashbang.active {
+   /*background: var(--rez-color); Set the background color to white when the "active" class is added */
+  animation: flashAnimation 1s ease-out forwards; /* Duration and timing when the "active" class is added */
+}
+
+@keyframes flashAnimation {
+  0% {
+      background: var(--rez-color);
+      opacity: 0.5;
+  }
+  100% {
+      background: transparent;
+      opacity: 0;
+  }
+}
