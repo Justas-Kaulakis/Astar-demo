@@ -79,6 +79,18 @@ html, body {
   animation-fill-mode: forwards;
 }
 
+#map-style {
+  position: fixed;
+  top: 1em;
+  right: 3em;
+  z-index: 1000;
+  background-color: aqua;
+  padding: 1em;
+  border-radius: 1em;
+  border: none;
+  box-shadow: -1px 0px 20px 0px aqua;
+}
+
 .flashbang.active {
    /*background: var(--rez-color); Set the background color to white when the "active" class is added */
   animation: flashAnimation 1s ease-out forwards; /* Duration and timing when the "active" class is added */

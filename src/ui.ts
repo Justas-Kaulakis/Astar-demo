@@ -13,7 +13,7 @@ export const setPozText = (poz: "start" | "end", c: LatLngTuple) => {
 var goldenIcon = L.icon({
   iconUrl: "micon.png",
   iconSize: [48, 50], // size of the icon
-  iconAnchor: [24, 60], // point of the icon which will correspond to marker's location
+  iconAnchor: [24, 50], // point of the icon which will correspond to marker's location
   popupAnchor: [-3, -40], // point from which the popup should open relative to the iconAnchor
 });
 

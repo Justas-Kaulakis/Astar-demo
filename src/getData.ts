@@ -1,7 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { LatLngBounds, Map } from "leaflet";
-import { BBox } from "geojson";
-
+import { LatLngBounds, Map, latLngBounds } from "leaflet";
 export interface OverPassDataType {
   elements: OverPassElementType[];
   generator: string;
@@ -10,12 +8,18 @@ export interface OverPassDataType {
 }
 
 export type Latlon = { lat: number; lon: number };
-
 export interface OverPassElementType {
-  id: number;
-  type: string;
-  bounds: { maxlat: number; maxlon: number; minlat: number; minlon: number };
+  bounds: {
+    maxlat: number;
+    maxlon: number;
+    minlat: number;
+    minlon: number;
+  };
   geometry: Latlon[];
+  id: number;
+  nodes: number[];
+  tags: { maxspeed?: string; oneway?: string; junction?: string };
+  type: string;
 }
 
 const getData = async (map: Map) => {
@@ -28,10 +32,13 @@ const getData = async (map: Map) => {
   const qstr = `[timeout:5][out:json];
   way["highway"](${bbox}); 
   out ids geom;`;
+  const qstr2 = `[timeout:5][out:json];
+  way["highway"]["highway"!~"footway|pedestrian|path"](${bbox});
+  out body geom;`;
 
   const json = await axios.post<OverPassDataType>(
     "https://overpass-api.de/api/interpreter",
-    qstr
+    qstr2
   );
   // console.log(json.data);
   return json.data;
