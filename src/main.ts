@@ -17,7 +17,7 @@ import flashbang from "./flashbang";
 const zzmCoords: LatLngTuple = [54.682524, 25.280692];
 const zoom = 15;
 var map = L.map("map").setView(zzmCoords, zoom);
-let mapMoved = false;
+let mapMoved = true;
 map.on("dragend", () => {
   mapMoved = true;
 });
